@@ -1,0 +1,50 @@
+<div class="view-product">
+    <button class="text-primary button-text"  (click)="showProduct()"> View Product </button>
+   <div *ngIf="showProductModal" id="source-modal" class="modal" style="display: block; padding-right: 15px;" >
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <ng-container *ngIf="!editEnabled">
+        
+          <div class="modal-header">
+            <button type="button" class="close" (click)='onClose()' data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"> {{product.title}} </h4>
+          </div>
+          <div class="modal-body">
+          	<h5> {{product.catgry}} </h5>
+      		  <pre><code>{{product.product}}</code>
+            </pre>
+      	
+      	  </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="onClose()" data-dismiss="modal">Close</button>
+            <button type="button" (click) = "onEdit()" class="btn btn-primary">Edit Product</button>
+            <button type = "button"  (click) = "onDelete()" class="btn btn-danger"> Delete Product </button>
+
+          </div>
+        </ng-container>
+        <ng-container *ngIf="editEnabled">
+          <div class="modal-header">
+             <button type="button" class="close" (click)='onClose()' data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title"> <input *ngIf="editEnabled" name="title" [(ngModel)] = "product.title"> </h4>
+          </div>
+          <div class="modal-body">
+            <h5>
+                <select name="category"  [(ngModel)]="product.catgry">
+                  <option   *ngFor ="let catgry of category" value={{catgry}}> {{catgry}} </option>
+                </select>
+            </h5>
+
+           <textarea name="product" [(ngModel)] = "product.product">{{product.product}} </textarea>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-default" (click)="onClose()" data-dismiss="modal">Close</button>
+             <button type = "button" *ngIf="editEnabled" (click) = "onSave()" class="btn btn-primary"> Save Product </button>
+             <button type = "button"  (click) = "onDelete()" class="btn btn-danger"> Delete Product </button>      
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
