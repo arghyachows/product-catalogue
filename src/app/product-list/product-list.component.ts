@@ -1,7 +1,7 @@
 /*product-list.component.ts*/
 
 import { Component, OnInit } from '@angular/core';
-import { Product, Query } from '../model/product';
+import { Product, Query, Prod } from '../model/product';
 import { ProductCatalogueService } from '../services/product-catalogue.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,7 +18,7 @@ import { Apollo } from 'apollo-angular';
 export class ProductListComponent implements OnInit {
 
   title: string = "Product List";
-  productList: Product[] = [];
+  productList: Observable<Prod[]>;
 
   constructor(
     public productListServ: ProductCatalogueService,
@@ -36,24 +36,21 @@ export class ProductListComponent implements OnInit {
   	 //this.productListServ.getProductList().then(productList => this.productList = productList);
      
      //Apollo GraphQL Call
-     this.apollo.watchQuery<Query>({
+     this.productList = this.apollo.watchQuery<Query>({
        query: gql`
-        query allProducts {
+        query {
           product {
-            id
+            id 
             catgry
             title
             product
           }
         }
-       `
+       `,
      })
      .valueChanges
      .pipe(
-       map(res => {
-         console.log(res);
-         this.productList = res.data.allProducts;
-      })
+       map(res => res.data.products)
      );
 
   }

@@ -11,11 +11,11 @@
 	</tr>
   </thead>
   <tbody>
-	<tr *ngFor="let product of productList">
+	<tr *ngFor="let product of productList | async">
 		<td> {{product.id}} </td>
 		<td> {{product.title}} </td>
 		<td> {{product.catgry}} </td>
-		<td> <app-view-product [product] = product (updateProductSuccess)= 'onUpdateProduct($event)' (deleteProductSuccess)= 'onDeleteProduct($event)'> </app-view-product> </td>
+		<!-- <td> <app-view-product [product] = product (updateProductSuccess)= 'onUpdateProduct($event)' (deleteProductSuccess)= 'onDeleteProduct($event)'> </app-view-product> </td> -->
 	
 	</tr>
   </tbody>

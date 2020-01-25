@@ -25,9 +25,7 @@ import { InMemoryDataService }  from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 
 //Apollo GraphQL Modules
-import { ApolloModule, Apollo } from 'apollo-angular'
-import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { GraphQLModule } from './graphql.module';
 
 const appRoutes :Routes = [
   { path: '', component: ProductListComponent },
@@ -51,21 +49,9 @@ const appRoutes :Routes = [
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    ApolloModule,
-    HttpLinkModule
+    GraphQLModule
   ],
   providers: [ProductCatalogueService],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor(
-    apollo: Apollo,
-    httplink: HttpLink
-  ){
-    apollo.create({
-      link: httplink.create({ uri: 'https://product-graphql.herokuapp.com/v1/graphql'}),
-      cache: new InMemoryCache()
-    })
-  }
-
-}
+export class AppModule {}
