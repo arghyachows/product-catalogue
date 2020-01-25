@@ -18,7 +18,7 @@ import { Apollo } from 'apollo-angular';
 export class ProductListComponent implements OnInit {
 
   title: string = "Product List";
-  productList: Observable<Prod[]>;
+  productList: Prod[];
 
   constructor(
     public productListServ: ProductCatalogueService,
@@ -36,21 +36,26 @@ export class ProductListComponent implements OnInit {
   	 //this.productListServ.getProductList().then(productList => this.productList = productList);
      
      //Apollo GraphQL Call
-     this.productList = this.apollo.watchQuery<Query>({
+     this.apollo.watchQuery<any>({
        query: gql`
         query {
           product {
-            id 
+            id
             catgry
             title
             product
           }
-        }
+        }      
        `,
      })
      .valueChanges
-     .pipe(
-       map(res => res.data.products)
+     .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
      );
 
   }
