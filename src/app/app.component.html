@@ -1,18 +1,16 @@
-<nav class="navbar navbar-inverse">
-   <div class="container-fluid">
-       <div class="navbar-header">
-           <div class="navbar-brand" >{{title}}</div>
-      </div>
-      <ul class="nav navbar-nav bigger-text">
-        <li>
-         <a routerLink="" routerLinkActive="active">Home</a>
-        </li>
-        <li>
-         <a routerLink="/howtouse" routerLinkActive="active">How to Use</a>
-        </li>
-    </ul>
-   </div>
-</nav>
+<header>
+  <!-- Fixed navbar -->
+  <app-navbar></app-navbar>
+
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
   <router-outlet></router-outlet>
+</main>
 
-
+<footer class="footer">
+  <div class="container">
+    <app-footer></app-footer>
+  </div>
+</footer>

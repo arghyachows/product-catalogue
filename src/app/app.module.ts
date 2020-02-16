@@ -22,6 +22,8 @@ import { RouterModule, Routes } from '@angular/router';
 //In memory Web api to simulate an http server
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 
 const appRoutes :Routes = [
@@ -36,7 +38,9 @@ const appRoutes :Routes = [
     ProductListComponent,
     AddProductComponent,
     ViewProductComponent,
-    HowToUseComponent
+    HowToUseComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   
    imports: [

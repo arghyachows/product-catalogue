@@ -1,23 +1,30 @@
 <div class="product">
-		<h2> {{title}}</h2>
-		<div style="float: right"><app-add-product (addProductSuccess)= 'onAddProduct($event)'> </app-add-product> </div>
-<table  id="table" class="table table-hover table-striped">
-  <thead>
-	<tr>
-		<th> id </th>
-		<th> Title </th>
-		<th> Category </th>
-		<th> Code </th>
-	</tr>
-  </thead>
-  <tbody>
-	<tr *ngFor="let product of productList">
-		<td> {{product.id}} </td>
-		<td> {{product.title}} </td>
-		<td> {{product.catgry}} </td>
-		<td> <app-view-product [product] = product (updateProductSuccess)= 'onUpdateProduct($event)' (deleteProductSuccess)= 'onDeleteProduct($event)'> </app-view-product> </td>
-	
-	</tr>
-  </tbody>
-</table>
+	<h2> {{title}}</h2>
+	<div style="float: right">
+		<app-add-product (addProductSuccess)='onAddProduct($event)'> </app-add-product>
+	</div>
+	<table id="table" class="table table-hover table-striped table-bordered">
+		<thead>
+			<tr>
+				<!-- <th> id </th> -->
+				<th> Title </th>
+				<th> Category </th>
+				<th> Description </th>
+				<th> </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let product of productList">
+				<!-- <td> {{product.id}} </td> -->
+				<td> {{product.title}} </td>
+				<td> {{product.catgry}} </td>
+				<td> {{product.product}} </td>
+				<td>
+					<app-view-product [product]=product (updateProductSuccess)='onUpdateProduct($event)'
+						(deleteProductSuccess)='onDeleteProduct($event)'> </app-view-product>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
 </div>
