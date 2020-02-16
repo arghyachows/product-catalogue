@@ -43,7 +43,6 @@ const appRoutes :Routes = [
     BrowserModule, 
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
     RouterModule.forRoot(appRoutes),
    
   ],

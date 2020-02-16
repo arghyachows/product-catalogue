@@ -8,7 +8,7 @@ export class ProductCatalogueService {
 
 // The project uses InMemoryWebApi to handle the Server API. 
 // Here "api/productList" simulates a Server API url 
-  private productListUrl = "api/productList";
+  private productListUrl = "https://tutorial-app-secured-v1.herokuapp.com/api/products";
   private headers  = new Headers({'Content-Type': "application/json"});
   constructor(private http: Http) { }
 

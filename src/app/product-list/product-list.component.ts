@@ -24,7 +24,10 @@ export class ProductListComponent implements OnInit {
 
   public loadProductList() {
      //invokes productList service's getProductList() method and stores the response in `productList` property
-  	 this.productListServ.getProductList().then(productList => this.productList = productList);
+  	 this.productListServ.getProductList().then(productList => {
+      console.log(productList);
+      this.productList = productList;
+      });
      
   }
 
