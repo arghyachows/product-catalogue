@@ -6,6 +6,6 @@ COPY . .
 RUN npm run build --aot
 
 FROM nginx:alpine
-COPY --from=node /app/dist/product-catalogue /usr/share/nginx/html
+COPY --from=node /app/dist/product-catalogue-app /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx","-g","daemon off;"]
