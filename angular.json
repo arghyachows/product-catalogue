@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "product-catalogue-app"
+  "defaultProject": "product-catalogue-app",
+  "cli": {
+    "analytics": false
+  }
 }
