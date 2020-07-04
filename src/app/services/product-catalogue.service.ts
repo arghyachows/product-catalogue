@@ -6,32 +6,32 @@ import { Http, Headers } from '@angular/http';
 @Injectable()
 export class ProductCatalogueService {
 
-// The project uses InMemoryWebApi to handle the Server API. 
-// Here "api/productList" simulates a Server API url 
-  private productListUrl = "https://tutorial-app-secured-v1.herokuapp.com/api/products";
-  private headers  = new Headers({'Content-Type': "application/json"});
-  constructor(private http: Http) { }
+	// The project uses InMemoryWebApi to handle the Server API. 
+	// Here "api/productList" simulates a Server API url 
+	private productListUrl = "http://ec2-52-90-197-60.compute-1.amazonaws.com:3000/api/products";
+	private headers = new Headers({ 'Content-Type': "application/json" });
+	constructor(private http: Http) { }
 
 	// getProductList() performs http.get() and returns a promise
-	public getProductList():Promise<any> {
+	public getProductList(): Promise<any> {
 		return this.http.get(this.productListUrl)
-		   .toPromise()
-	   	   .then(response => response.json())
-		   .catch(this.handleError);
+			.toPromise()
+			.then(response => response.json())
+			.catch(this.handleError);
 	}
 
-    //addProduct() creates new products 
+	//addProduct() creates new products 
 	public addProduct(product: Product): Promise<any> {
-		return this.http.post(this.productListUrl, JSON.stringify(product), {headers: this.headers})
-	   .toPromise()
-		   .then(response =>response.json())
-		   .catch(this.handleError);
+		return this.http.post(this.productListUrl, JSON.stringify(product), { headers: this.headers })
+			.toPromise()
+			.then(response => response.json())
+			.catch(this.handleError);
 	}
 	//updateProduct() creates new products 
-	public updateProduct(product: Product):Promise<any> {
-		
+	public updateProduct(product: Product): Promise<any> {
+
 		const url = `${this.productListUrl}/${product.id}`;
-		return this.http.put(url, JSON.stringify(product), {headers: this.headers})
+		return this.http.put(url, JSON.stringify(product), { headers: this.headers })
 			.toPromise()
 			.then(() => product)
 			.catch(this.handleError);
@@ -39,15 +39,15 @@ export class ProductCatalogueService {
 	//deleteProduct() creates new products 
 	public deleteProduct(product: Product): Promise<void> {
 		const url = `${this.productListUrl}/${product.id}`;
-		return this.http.delete(url, {headers: this.headers})
+		return this.http.delete(url, { headers: this.headers })
 			.toPromise()
-			.then(() => null )
+			.then(() => null)
 			.catch(this.handleError);
 	}
 
 
-  private handleError(error: any): Promise<any> {
- 	 console.error('An error occurred', error); 
-  	 return Promise.reject(error.message || error);
-  }
+	private handleError(error: any): Promise<any> {
+		console.error('An error occurred', error);
+		return Promise.reject(error.message || error);
+	}
 }
