@@ -8,7 +8,7 @@ export class ProductCatalogueService {
 
 	// The project uses InMemoryWebApi to handle the Server API. 
 	// Here "api/productList" simulates a Server API url 
-	private productListUrl = "http://ec2-52-90-197-60.compute-1.amazonaws.com:3000/api/products";
+	private productListUrl = "http://ip172-18-0-19-bs5l04boudsg00a8dreg-3000.direct.labs.play-with-docker.com/api/products";
 	private headers = new Headers({ 'Content-Type': "application/json" });
 	constructor(private http: Http) { }
 
