@@ -7,7 +7,7 @@ import { Http, Headers } from "@angular/http";
 export class ProductCatalogueService {
   // The project uses InMemoryWebApi to handle the Server API.
   // Here "api/productList" simulates a Server API url
-  private productListUrl = "40.76.153.108:3000/api/products";
+  private productListUrl = "http://40.76.153.108:3000/api/products";
   private headers = new Headers({ "Content-Type": "application/json" });
   constructor(private http: Http) {}
 
